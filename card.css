@@ -1,0 +1,99 @@
+
+
+:root {
+    --gradient: linear-gradient(to left top, #DD2476 10%, #FF512F 90%) !important;
+  }
+  
+ 
+  
+  .card {
+    background: rgba(48, 129, 223, 0.4);
+    border: 1px solid #14dee1;
+    color: rgba(13, 13, 12, 0.8);
+    margin-bottom: 2rem;
+  }
+  
+  .btn {
+    border: 5px solid;
+    border-image-slice: 1;
+    background-color: #14dee1;
+    text-decoration: none;
+    transition: all .4s ease;
+  }
+  
+  .btn:hover, .btn:focus {
+ 
+    border: 5px solid rgb(9, 9, 9) !important; 
+    box-shadow: rgb(207, 246, 14) 1px 0 10px;
+    text-decoration: underline;
+  }
+
+
+  *{
+    font-family: 'poppins', sans-serif ;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    
+}
+
+
+body{
+    background: url(./images/day.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.heading
+{
+    width: 100%;
+    margin-left: 0%;
+    margin-top: 5px;
+    background-color: rgba(255,255,255,0.3);
+    height: 10vh;
+  
+    
+    
+}
+.heading h2{
+    margin-left: 27%;
+    margin-top: 5px;
+    margin-bottom: 3px;
+    font-family: cursive;
+    font-size: 40px;
+}
+
+.color-change{
+    float: right;
+    margin-top: 1%;
+    margin-right: 20px;
+    font-size: 32px;
+}
+
+#white{
+    color: rgb(0, 0, 0);
+    font-size: 32px;
+    margin-right: 5px;
+}
+#black{
+    font-size: 32px;
+    color: rgb(0, 0, 0);
+    margin-right: 3px;
+}
+
+card-cont{
+    height: 50vh;
+    overflow-y: scroll;
+}
+.card-title{
+    text-align: center;
+
+}
+.dwn{
+    width: 64%;
+    height: 1%;
+    align-items: center;
+    margin-left: 20%;
+}

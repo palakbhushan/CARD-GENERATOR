@@ -1,0 +1,161 @@
+       </div>
+
+        <?php
+        $ROLL = '';
+        $NAME = '';
+        $CONTACT = '';
+        $CLASS= '';
+        if($_SERVER['REQUEST_METHOD'] == 'POST')
+        {
+            $ROLL = $_POST['roll'];
+            $NAME = $_POST['username'];
+            $CONTACT = $_POST['mobile'];
+            $CLASS = $_POST['class'];
+
+            echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Success</strong> Your Email '.  "$email" .'and Password '. "$password ". 'submitted successfully.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>';
+        }
+        //submit to database
+        //connection
+        $serverName = "localhost";
+        $username = "root";
+        $password = "123456";
+
+        $conn = mysqli_connect($serverName, $username, $password);
+    //     if(!$conn)
+    //     {
+    //         die("connection was unsuccessful ".mysqli_connect_error() );
+    //     }
+    //     echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    //     <strong>Connection was Successful</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    //       <span aria-hidden="true">&times;</span>
+    //     </button>
+    //   </div>';
+
+      //create database
+      $database = "card1";
+      $sql = "CREATE DATABASE $database";
+      $result = mysqli_query($conn,$sql);
+    //   if($result)
+    //   {
+    //     echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    //     <strong>Database was connected Successfully'."<br>". '</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    //       <span aria-hidden="true">&times;</span>
+    //     </button>
+    //   </div>';
+      
+    //   }
+    //   else{
+    //     echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    //     <strong>Database creation unsuccessful ' . mysqli_error($conn) .'</strong>
+    //     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    //       <span aria-hidden="true">&times;</span>
+    //     </button>
+    //   </div>';
+    //   }
+    
+    echo "$ROLL";
+      $conn = mysqli_connect($serverName, $username, $password, $database);
+//     if(!$conn)
+//     {
+//         die("connection was unsuccessful 2 ".mysqli_connect_error() );
+//     }
+//     echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+//     <strong>Connection was Successful 2</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close">
+//       <span aria-hidden="true">&times;</span>
+//     </button>
+//   </div>';
+
+
+    $sql1 = "CREATE TABLE details(`ROLL` INT(5), `NAME` VARCHAR(20), `CONTACT` INT(12), `CLASS` VARCHAR(10), PRIMARY KEY(`ROLL`))";
+    $result = mysqli_query($conn,$sql1);
+
+
+    // if($result)
+    //   {
+    //     echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    //     <strong>TABLE was created Successfully'."<br>". '</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    //       <span aria-hidden="true">&times;</span>
+    //     </button>
+    //   </div>';
+      
+    //   }
+    //   else{
+    //     echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    //     <strong>TABLE created unsuccessful ' . mysqli_error($conn) .'</strong>
+    //     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    //       <span aria-hidden="true">&times;</span>
+    //     </button>
+    //   </div>';
+    //   }
+    
+    //insert into table
+    $sql1 = "INSERT INTO details VALUES('$ROLL','$NAME','$CONTACT','$CLASS');";
+    $result = mysqli_query($conn,$sql1);
+    
+
+    if($result)
+      {
+        echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Data inserted Successfully'."<br>". '</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>';
+      
+      }
+      else{
+
+
+        echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Data insertion unsuccessful ' . mysqli_error($conn) .'</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>';
+      }
+
+
+
+?>  
+
+
+
+
+<div class="card" id="1">
+                <img src="./images/day.jpg" alt="" class="iimg" id="iimg">
+                <h5 class="name">PALAK BHUSHAN</h5>
+                <li class="class">BTech CSE</li>
+                <li class="roll">A01</li>
+                <li class="contact">6204603010</li>
+            </div>
+
+<form action="#"  method="post">
+                <span>
+                    <input type="text" id="username" name="uname" placeholder="Student Name" required>
+                </span>
+
+
+                <span>
+                    <input type="text" required placeholder="class" name="cls" id="class">
+                </span>
+
+ 
+                <span>
+                    <input name ="roll" type="number" max=100 min=1 placeholder="Roll Number" id="roll" required>
+                    <input type="file" placeholder="image" id="image" required>
+                </span>
+
+                <!-- <span>
+                    
+                </span> -->
+
+                <span>
+                    <input type="text" required placeholder="contact number" name="contact" id="mobile">
+                </span>
+
+                <button id="submit" onclick="generate()" type="submit" >create</button>
+        </form>
